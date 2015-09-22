@@ -1,0 +1,23 @@
+ <% include ../partials/header %>
+ <div class="row">
+    <div class="col-xs-3 filler"></div>
+    <div class="col-xs-6">
+      <form action="/zoos/<%= zoo.id %>?_method=put" class="text-center" method="POST">
+        <h1>Update Zoo</h1>
+          <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Name</span>
+          <input type="text" class="form-control" value="<%= zoo.name %>" aria-describedby="basic-addon1"name="name" id="name" required>
+        </div>
+          <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Location</span>
+          <input type="text" class="form-control" value="<%= zoo.location %>" aria-describedby="basic-addon1"name="location" id="location" required>
+        </div>
+         <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Animals</span>
+          <input type="text" class="form-control" value="<%= zoo.animals %>" aria-describedby="basic-addon1"name="animals" id="animals">
+        </div> 
+        <button class="btn-lg btn-info">UPDATE</button>       
+      </form>
+    </div>
+    <div class="col-xs-3 filler"></div>
+  <% include ../partials/footer %>

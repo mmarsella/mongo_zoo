@@ -70,7 +70,7 @@ app.get("/zoos/:id/edit", function (req,res){
 });
 
 //UPDATE
-app.post("/zoos/:id", function (req,res){
+app.put("/zoos/:id", function (req,res){
   // this can be refactored to key:value refs, calling the req.body.zoos
   db.Zoo.findByIdAndUpdate(req.params.id,{name:req.body.name, location:req.body.location}, function (err, zoo){
     if(err){
