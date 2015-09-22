@@ -1,4 +1,4 @@
-var mongoose = require("/mongoose");
+var mongoose = require("mongoose");
 var Zoo = require("./zoo");
 
 var animalSchema = new mongoose.Schema({
