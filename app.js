@@ -89,7 +89,7 @@ app.delete("/zoos/:id", function (req,res){
       console.log(err);
       res.render("404"); //something wrong happens -- 404
     }else{
-      animals.remove();
+      zoo.remove();
       res.redirect("/zoos");
     }
   });
