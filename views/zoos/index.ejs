@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Zoo Association</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-Welcome to the zoo app!
-  
-</body>
-</html>
+<% include ../partials/header %>
+ <div class="col-xs-3 text-center"></div>
+  <div class="col-xs-6 col-xs text-center">
+    <table class="table table-condensed table-hover text-center" >
+    <h1>ZOO LIST</h1>  
+      <thead>
+        <th class="text-center">Name</th>
+        <th class="text-center">Location</th>
+      </thead>
+      <tbody>
+      <% zoos.forEach(function(el){ %> 
+          <tr>
+            <td><a href="/zoos/<%=el.id%>"><strong><%= el.name %></a></strong></td>   
+            <td><%= el.location %></td>
+          </tr>
+       <% }) %>
+      </tbody>
+    </table>  
+     <a href="/zoos/new" class="btn-lg btn-info text-center">ADD ZOO</a>
+  </div>
+  <div class="col-xs-3"></div>
+<% include ../partials/footer %>
