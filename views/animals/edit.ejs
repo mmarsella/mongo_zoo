@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+ <div class="col-xs-3 text-center"></div>
+  <div class="col-xs-6 col-xs text-center">
+    <table class="table table-condensed table-hover text-center" >
+    <h1>ANIMALS AT <%=zoo.name%></h1>  
+      <thead>
+        <th class="text-center">Name</th>
+        <th class="text-center">Location</th>
+      </thead>
+      <tbody>
+      <% zoos.animals.forEach(function(el){ %> 
+          <tr>
+            <td><a href="/zoos/<%=el.id%>/animals/<%= el._id %>"><strong><%= el.name %></a></strong></td>   
+            <td><%= el.species %></td>
+            <td><%= el.age %></td>
+            <td><%= el.photo %></td>
+          </tr>
+       <% }) %>
+      </tbody>
+    </table>  
+     <a href="/zoos" class="btn-lg btn-info text-center">HOME</a>
+  </div>
+  <div class="col-xs-3"></div>
+<% include ../partials/footer %>

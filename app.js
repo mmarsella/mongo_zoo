@@ -101,33 +101,29 @@ app.delete("/zoos/:id", function (req,res){
 //INDEX
 app.get("/zoos/:zoo_id/animals", function (req,res){
   //find all animals, populate page
-  db.Zoo.findById(req.params.zoos_id).populate("animals").exec(function(err, zoo){
+  db.Zoo.findById(req.params.zoo_id).populate("animals").exec(function(err, zoo){
     res.render("animals/index", {zoo:zoo}); // grabbing the zoo, can call animals from zoo in ejs
   });
 });
 
 //NEW
 app.get("/zoos/:zoo_id/animals/new", function (req,res){
-  db.Zoo.findById(req.params.zoos_id, function (err, zoo){
-    res.render("zoos/new", {zoo:zoo});
+  db.Zoo.findById(req.params.zoo_id, function (err, zoo){
+    res.render("animals/new", {zoo:zoo});
   });
 });
 
 //CREATE
    // simply create the parent doc.  Don't worry about child/child field here (animals)
 app.post("/zoos/:zoo_id/animals", function (req,res){ 
-  db.Animal.create({
-    name:req.body.name, 
-    species:req.body.species,
-    age:req.body.age,
-    photo:req.body.photo,
-  }, 
-  function (err, animal){  // references the animal just created
+  db.Animal.create(req.body, function (err, animal){  // references the animal just created
+    console.log(animal); //see if animal is created
     if(err){
       console.log(err);
       res.render("/zoos/new");
     }else{
-      db.Zoo.findById(req.params.zoos_id, function (err,zoo){
+      db.Zoo.findById(req.params.zoo_id, function (err,zoo){
+       console.log("ZOO: " + zoo);
         zoo.animals.push(animal); // push the new animal into the book array
         animal.zoo = zoo._id; // set the ref id inside animal to the zoo's id
         animal.save(); //save the animal creation

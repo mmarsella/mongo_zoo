@@ -26,9 +26,15 @@
         <a href="/zoos"><button class="btm-sm btn-info">Home</button></a>
       </div>
       <div class="col-xs-4 text-center">
-      </div>
       <form action="/zoos/<%= zoo.id%>?_method=delete" method="POST"><button class="btn-sm btn-danger">Delete</button></form> 
+      </div>
     </div>
-  </div>
+    <br>
+    <div class="row">
+     <div class="text-center">
+        <a href="/zoos/<%=zoo.id%>/animals/new"><button class="btm-sm btn-success">Add Animal</button></a>
+      </div>
+    </div>
+  </div>  
   <div class="col-xs-3"></div>
 <% include ../partials/footer %>
