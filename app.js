@@ -114,10 +114,9 @@ app.get("/zoos/:zoo_id/animals/new", function (req,res){
 });
 
 //CREATE
-   // simply create the parent doc.  Don't worry about child/child field here (animals)
 app.post("/zoos/:zoo_id/animals", function (req,res){ 
   db.Animal.create(req.body, function (err, animal){  // references the animal just created
-    console.log(animal); //see if animal is created
+    console.log("THE ANIMAL: " + animal); //see if animal is created
     if(err){
       console.log(err);
       res.render("/zoos/new");
@@ -125,6 +124,7 @@ app.post("/zoos/:zoo_id/animals", function (req,res){
       db.Zoo.findById(req.params.zoo_id, function (err,zoo){
        console.log("ZOO: " + zoo);
         zoo.animals.push(animal); // push the new animal into the book array
+        console.log("ANIMAL ARRAY: " + zoo.animals);
         animal.zoo = zoo._id; // set the ref id inside animal to the zoo's id
         animal.save(); //save the animal creation
         zoo.save(); // save the zoo collection
@@ -183,6 +183,19 @@ app.delete("/zoos/:zoo_id/animals/:id", function (req,res){
     }
   });
 });
+
+/**
+TO DO:
+
+NEED TO ADD ANIMALS TO A ZOO,
+currently pulling the id and not strings inside 
+of the array
+
+*/
+
+
+
+
 
 
 // 404 CATCH ALL

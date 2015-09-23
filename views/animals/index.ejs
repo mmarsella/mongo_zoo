@@ -6,6 +6,8 @@
       <thead>
         <th class="text-center">Name</th>
         <th class="text-center">Location</th>
+        <th class="text-center">Species</th>
+        <th class="text-center">Photo</th>
       </thead>
       <tbody>
       <% zoo.animals.forEach(function(el){ %> 
@@ -13,7 +15,8 @@
             <td><a href="/zoos/<%=el.id%>/animals/<%= el._id %>"><strong><%= el.name %></a></strong></td>   
             <td><%= el.species %></td>
             <td><%= el.age %></td>
-            <td><%= el.photo %></td>
+            <td><img src="<%= el.photo %>" alt=""> </td>
+            <td><form action="/zoos/<%= zoo.id%>/animals/<%=el.id%>?_method=delete" method="POST"><button class="btn-sm btn-danger">Delete</button></form> </td>
           </tr>
        <% }) %>
       </tbody>
@@ -22,3 +25,5 @@
   </div>
   <div class="col-xs-3"></div>
 <% include ../partials/footer %>
+
+<!-- /zoos/:zoo_id/animals/:id -->
