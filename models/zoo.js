@@ -1,4 +1,6 @@
 var mongoose = require("mongoose");
+var Animal = require("./animal"); // hook won't know about 
+//animal until I require it here!!
 
 var zooSchema = new mongoose.Schema({
   name:String,
@@ -16,6 +18,16 @@ zooSchema.pre('remove', function(callback) {
     callback();
 });
 
+
+//1st param = model name, will be the name of the collection
+// will be used in the refs!!!!
+
+
+// 2nd param = schema
 var Zoo = mongoose.model("Zoo", zooSchema);
 
 module.exports = Zoo;
+
+
+//TYPE AND REF
+

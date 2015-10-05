@@ -46,7 +46,7 @@ app.post("/zoos", function (req,res){
 
 //SHOW
 app.get("/zoos/:id", function (req,res){
-  db.Zoo.findById(req.params.id, function (err, zoo){
+  db.Zoo.findById(req.params.id).populate("animals").exec(function (err, zoo){
     if(err){
       console.log(err);
       res.render("404");
@@ -138,8 +138,10 @@ app.post("/zoos/:zoo_id/animals", function (req,res){
 //SHOW
 app.get("/zoos/:zoo_id/animals/:id", function (req,res){
   db.Animal.findById(req.params.id)
-   .populate("zoo")
-   .exec(function(err,animal){
+   .populate("zoo")  // POPULATE:  A method called on whatevr the query returns.  Find something AND THEN populate the information.
+    // the param populates all the info of zoo inside the animal
+    // it also creates an object within that field, instead of only referencing the id.
+   .exec(function(err,animal){  
     console.log(animal.zoo);
     res.render("animals/show",{animal:animal});
   });
@@ -192,8 +194,6 @@ currently pulling the id and not strings inside
 of the array
 
 */
-
-
 
 
 
