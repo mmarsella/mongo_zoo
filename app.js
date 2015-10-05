@@ -136,7 +136,7 @@ app.post("/zoos/:zoo_id/animals", function (req,res){
 });
 
 //SHOW
-app.get("/zoos/:zoo_id/animals/:id", function (req,res){
+app.get("/animals/:id", function (req,res){
   db.Animal.findById(req.params.id)
    .populate("zoo")  // POPULATE:  A method called on whatevr the query returns.  Find something AND THEN populate the information.
     // the param populates all the info of zoo inside the animal
@@ -148,7 +148,7 @@ app.get("/zoos/:zoo_id/animals/:id", function (req,res){
 });
 
 //EDIT
-app.get("/zoos/:zoo_id/animals/:id/edit", function (req,res){
+app.get("/animals/:id/edit", function (req,res){
   db.Animal.findById(req.params.id)
     .populate("zoo")
     .exec(function (err,animal){
@@ -157,7 +157,7 @@ app.get("/zoos/:zoo_id/animals/:id/edit", function (req,res){
 });
 
 //UPDATE
-app.post("/zoos/:zoo_id/animals/:id", function (req,res){
+app.put("/animals/:id", function (req,res){
   // this can be refactored to key:value refs, calling the req.body.zoos
   db.Animal.findByIdAndUpdate(req.params.id,{
     name:req.body.name, 

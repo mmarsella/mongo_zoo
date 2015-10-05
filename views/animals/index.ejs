@@ -12,7 +12,7 @@
       <tbody>
       <% zoo.animals.forEach(function(el){ %> 
           <tr>
-            <td><a href="/zoos/<%=el.id%>/animals/<%= el._id %>"><strong><%= el.name %></a></strong></td>   
+            <td><a href="/animals/<%= el._id %>"><strong><%= el.name %></a></strong></td>   
             <td><%= el.species %></td>
             <td><%= el.age %></td>
             <td><img src="<%= el.photo %>" alt=""> </td>
