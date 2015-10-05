@@ -169,7 +169,7 @@ app.put("/animals/:id", function (req,res){
       console.log(err);
       res.render("404");
     }else{
-      res.redirect("/zoos");  // after editing, go back to main page
+      res.redirect("/animals/" + req.params.id);  // after editing, go back to main page
     }
   });
 });
@@ -185,17 +185,6 @@ app.delete("/zoos/:zoo_id/animals/:id", function (req,res){
     }
   });
 });
-
-/**
-TO DO:
-
-NEED TO ADD ANIMALS TO A ZOO,
-currently pulling the id and not strings inside 
-of the array
-
-*/
-
-
 
 
 // 404 CATCH ALL
