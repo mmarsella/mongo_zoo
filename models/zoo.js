@@ -13,9 +13,9 @@ var zooSchema = new mongoose.Schema({
 
 
 //before removing a zoo, remove all animals in zoo
-zooSchema.pre('remove', function(callback) {
+zooSchema.pre('remove', function(next) {
     Animal.remove({zoo: this._id}).exec();
-    callback();
+    next();
 });
 
 

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var Zoo = require("./zoo");
+// var Zoo = require("./zoo");
 
 var animalSchema = new mongoose.Schema({
     name:String,
@@ -13,5 +13,4 @@ var animalSchema = new mongoose.Schema({
 });
 
 var Animal = mongoose.model("Animal", animalSchema);
-
 module.exports = Animal;
